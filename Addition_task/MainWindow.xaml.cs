@@ -1,0 +1,31 @@
+﻿using System.Windows;
+
+namespace Addition_task
+{
+    public delegate void EventDelegate(object sender, RoutedEventArgs e);
+
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        EventDelegate eventDelegate = null;
+
+        public event EventDelegate myEvent
+        {
+            add { eventDelegate += value; }
+            remove { eventDelegate -= value; }
+        }
+
+        public MainWindow()
+        {
+            InitializeComponent();
+            new Presenter(this);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            eventDelegate.Invoke(sender, e);
+        }
+    }
+}
