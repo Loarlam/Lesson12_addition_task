@@ -2,21 +2,19 @@
 {
     class Presenter
     {
-        Model model = null;
-        MainWindow mainWindow = null;
+        Model _model;
+        MainWindow _mainWindow;
 
         public Presenter(MainWindow mainWindow)
         {
-            this.model = new Model();
-            this.mainWindow = mainWindow;
-            this.mainWindow.myEvent += new EventDelegate(mainWindow_myEvent);
+            _model = new Model();
+            _mainWindow = mainWindow;
+            _mainWindow.myEvent += mainWindow_myEvent;
         }
 
         void mainWindow_myEvent(object sender, System.EventArgs e)
         {
-            string variable = model.Logic(this.mainWindow.textBox1.Text);
-
-            this.mainWindow.textBox1.Text = variable;
+            _mainWindow.textBox1.Text = _model.Logic(_mainWindow.textBox1.Text);
         }
     }
 }

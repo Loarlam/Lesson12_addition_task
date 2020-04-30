@@ -5,9 +5,6 @@ namespace Addition_task
 {
     public delegate void EventDelegate(object sender, RoutedEventArgs e);
 
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         EventDelegate eventDelegate = null;
@@ -26,7 +23,7 @@ namespace Addition_task
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            eventDelegate.Invoke(sender, e);
+            eventDelegate(sender, e);
         }
     }
 }
